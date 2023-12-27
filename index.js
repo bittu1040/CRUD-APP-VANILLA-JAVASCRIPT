@@ -61,82 +61,10 @@ const data = [
         "Email": "david@example.com",
         "Mobile": "2222222222",
         "DOB": "1980-04-05"
-    },
-    {
-        "Sl": 8,
-        "First": "Olivia",
-        "Last": "Miller",
-        "City": "Denver",
-        "Email": "olivia@example.com",
-        "Mobile": "9999999999",
-        "DOB": "1998-01-18"
-    },
-    {
-        "Sl": 9,
-        "First": "Daniel",
-        "Last": "Wilson",
-        "City": "Boston",
-        "Email": "daniel@example.com",
-        "Mobile": "4444444444",
-        "DOB": "1983-06-27"
-    },
-    {
-        "Sl": 10,
-        "First": "Sophia",
-        "Last": "Garcia",
-        "City": "Phoenix",
-        "Email": "sophia@example.com",
-        "Mobile": "6666666666",
-        "DOB": "1991-02-14"
-    },
-    {
-        "Sl": 11,
-        "First": "James",
-        "Last": "Martinez",
-        "City": "Philadelphia",
-        "Email": "james@example.com",
-        "Mobile": "1212121212",
-        "DOB": "1987-10-08"
-    },
-    {
-        "Sl": 12,
-        "First": "Isabella",
-        "Last": "Lopez",
-        "City": "Austin",
-        "Email": "isabella@example.com",
-        "Mobile": "7878787878",
-        "DOB": "1993-12-22"
-    },
-    {
-        "Sl": 13,
-        "First": "Logan",
-        "Last": "Hernandez",
-        "City": "Portland",
-        "Email": "logan@example.com",
-        "Mobile": "4545454545",
-        "DOB": "1989-08-17"
-    },
-    {
-        "Sl": 14,
-        "First": "Ava",
-        "Last": "Gonzalez",
-        "City": "Dallas",
-        "Email": "ava@example.com",
-        "Mobile": "6565656565",
-        "DOB": "1996-06-03"
-    },
-    {
-        "Sl": 15,
-        "First": "Mason",
-        "Last": "Perez",
-        "City": "Detroit",
-        "Email": "mason@example.com",
-        "Mobile": "9898989898",
-        "DOB": "1986-04-28"
     }
 ];
 
-function populateTable() {
+function populateTable(data) {
     const tableBody = document.getElementById('tableBody');
 
     tableBody.innerHTML = '';
@@ -154,22 +82,21 @@ function populateTable() {
         tableBody.appendChild(row);
     });
 }
-populateTable();
+populateTable(data);
+
+const searchInput = document.getElementById('searchInput');
+searchInput.addEventListener('input', filterTable);
 
 function filterTable() {
-    const searchInput = document.getElementById('searchInput');
     const searchTerm = searchInput.value.toLowerCase().trim();
-  
+    console.log("search term", searchTerm)
+
     const filteredData = data.filter(item => {
-      // Customize the filtering logic as per your data structure
-      return Object.values(item).some(value =>
-        value.toString().toLowerCase().includes(searchTerm)
-      );
+        return Object.values(item).some(value =>
+            value.toString().toLowerCase().includes(searchTerm)
+        );
     });
-  
+
+    console.log(filteredData)
     populateTable(filteredData);
-  }
-  
-  // Event listener for search input
-  const searchInput = document.getElementById('searchInput');
-  searchInput.addEventListener('input', filterTable);
+}
