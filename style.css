@@ -1,0 +1,21 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+#myTable {
+    table-layout: fixed;
+    width: 100%;
+  }
+  
+  #myTable th,
+  #myTable td {
+    width: calc(100% / 7); 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+    white-space: nowrap; 
+  }
+  
